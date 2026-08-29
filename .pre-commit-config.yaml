@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff
+        entry: ruff check accounts config common datasets labbridge projects workspaces tests
+        language: system
+        pass_filenames: false

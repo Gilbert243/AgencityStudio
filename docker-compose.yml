@@ -7,14 +7,28 @@ services:
       postgres:
         condition: service_healthy
       redis:
-        condition: service_started
+        condition: service_healthy
     ports:
       - "8000:8000"
+    volumes:
+      - dataset_storage:/app/storage
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/')"]
       interval: 10s
       timeout: 5s
       retries: 5
+
+  worker:
+    build: .
+    command: celery -A config worker --loglevel=INFO --concurrency=2
+    env_file: .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - dataset_storage:/app/storage
 
   postgres:
     image: postgres:17
@@ -32,6 +46,12 @@ services:
 
   redis:
     image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data:
+  dataset_storage:

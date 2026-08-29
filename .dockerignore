@@ -1,0 +1,12 @@
+.git
+.env
+.venv
+.emails
+__pycache__
+.pytest_cache
+node_modules
+static
+staticfiles
+test-results
+playwright-report
+*.sqlite3
