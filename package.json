@@ -20,7 +20,7 @@
     "alpinejs": "3.16.2",
     "echarts": "6.1.0",
     "htmx.org": "2.0.10",
-    "lucide": "1.31.0"
+    "lucide": "1.39.0"
   },
   "devDependencies": {
     "@playwright/test": "1.62.1",
