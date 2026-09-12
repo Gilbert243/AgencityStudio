@@ -23,7 +23,7 @@
     "lucide": "1.31.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.62.1",
+    "@playwright/test": "1.63.0",
     "@tailwindcss/cli": "4.3.3",
     "esbuild": "0.28.2",
     "tailwindcss": "4.3.3"
